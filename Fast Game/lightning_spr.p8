@@ -8,19 +8,17 @@ function _init()
 	scene = "logo"
 	playerinit()
 	
-	coinstorage = {}
+	coins = {}
 	
-	for i = 0 , 10 do
-	
-	co = coininit()
-	
-	add(co , coinstorage)
-
-
-
+	for i=0,10 do
+		local coin={
+			f = 2,
+			x = flr(rnd(16))*8,
+			y = flr(rnd(16))*8,
+			}
+		add(coins,coin)
 	end
-
-
+	
 
 	
 end
@@ -142,8 +140,8 @@ map(0,0)
 
 spr(p.f , p.x ,p.y)
 
-for co in all (coinstorage) do
-spr(c.f, c.x , c.y )
+for coin in all (coins) do
+	spr(coin.f, coin.x, coin.y)
 end
 
 
@@ -158,18 +156,6 @@ p.f = 1  -- starting frame
 p.x = 16 -- start location x 
 p.y = 16 -- start location y
 p.s = 2  -- speed
-
-
-end
--->8
--- items
-
-function coininit()
-
-c = {}
-c.f = 2
-c.x = flr(rnd(16))*8
-c.y = flr (rnd(16)) * 8
 
 
 end
