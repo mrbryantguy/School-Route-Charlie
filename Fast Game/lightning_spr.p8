@@ -1,11 +1,13 @@
 pico-8 cartridge // http://www.pico-8.com
-version 34
+version 35
 __lua__
 -- init
 
 function _init()
 	-- variables
 	scene = "logo"
+	score = 0
+	winscore = 20
 	playerinit()
 	
 	coins = {}
@@ -147,7 +149,14 @@ function update_game()
 	--wall collision
 	
 
-	
+	--token collection
+	for coin in all (coins) do
+	 if coin.x == p.x and coin.y == p.y then
+	  score += 1
+	  winscore -= 1
+	  del(coins, coin)
+	 end
+	end
 	
 	
 		local inputx = 0
@@ -189,9 +198,9 @@ end
 --maybe can use something like
 --this to make boxes spawn rand.
 
-
-
-
+--score printing
+print('score: '..score, cx+2,cy+2,7)
+print(winscore..' left to win!',cx+2,cy+8,7)
 
 end
 -->8
@@ -208,7 +217,6 @@ p.oy = 16*4
 p.h = 8
 p.w = 8
 p.s = 2  -- speed
-
 
 end
 -->8
