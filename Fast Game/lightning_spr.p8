@@ -144,25 +144,31 @@ function update_game()
 	   enemy_x = -8
 	end--if enemy goes past screen
 	
+	--wall collision
 	
-	
-	-- movemenmt codes
-	
- if(btnp(⬅️)) p.x -=4 -- movement left
-	if(btnp(⬅️)) p.f = 17 -- changing sprite when left
- if(btnp(➡️)) p.x +=4-- movement right
- if(btnp(➡️)) p.f = 1 -- changing sprite when right
- if(btnp(⬆️)) p.y -=4 -- movement up
- if(btnp(⬇️)) p.y +=4 -- movemement down 
 
-	-- map changes  simp;e
 	
-	cx = p.x - 60
-	cy = p.y - 60
+	
+	
+		local inputx = 0
+	local inputy = 0
+	
+	
+ if(btnp(⬅️)) inputx -=4 -- movement left
+	if(btnp(⬅️)) p.f = 17 -- changing sprite when left
+ if(btnp(➡️)) inputx +=4-- movement right
+ if(btnp(➡️)) p.f = 1 -- changing sprite when right
+ if(btnp(⬆️)) inputy -=4 -- movement up
+ if(btnp(⬇️)) inputy +=4 -- movemement down 
+
+	movement(inputx,inputy)
+	
 	
 	
 
 end
+
+
 
 
 
@@ -197,14 +203,77 @@ p ={}
 p.f = 1  -- starting frame 
 p.x = 16*4 -- start location x 
 p.y = 16*4 -- start location y
+p.ox = 16*4
+p.oy = 16*4
+p.h = 8
+p.w = 8
 p.s = 2  -- speed
 
 
 end
 -->8
---change map location
+-- movement funcitons 
+--dont ask how it worked
+-- seal of approved
+function movement(lx,ly)
+	
+	p.ox = p.x 
+	p.oy = p.y
+
+	p.x += lx
+	p.y += ly
+	
+		-- 3 and 3 are temp data val
+		-- unable to find correct code
+
+	if mapcollision(p.x , p.y , p.w , p.h ) then
+	
+		p.x = p.ox
+		p.y = p.oy
+	
+	
+	
+	else
+
+	p.x = p.x + lx
+	p.y = p.y + ly
+	
+	
+	cx = p.x - 60
+	cy = p.y - 60
+
+end
+
+end
 
 
+function mapcollision( x , y ,w, h )
+
+	
+
+	s1 = mget(x / 8 , y / 8)
+	s2 = mget((x+w-1 ) / 8 , y / 8)
+	s3 = mget(x / 8, (y + w -1) /8)
+	s4 = mget((x+w-1) / 8 , (y+w -1 ) /16)
+
+
+	if fget(s1 , 0) then 
+		return true
+	elseif fget(s2 , 0) then
+		return true
+	elseif fget(s3 , 0 ) then
+		return true
+	elseif fget(s4 , 0) then
+		return true
+	
+	end
+	
+	
+	
+	
+	return false
+
+end 
 __gfx__
 000000000c77c77000aaaa0000000000566666656666666506666666666666650666666666666665066666666666666000000000000000000000000000000000
 000000000c74c4700a9999a000000000656666566666665605666666666666560566666666666656056666666666665005666666666666500000000000000000
