@@ -41,9 +41,13 @@ function _update()
 	
 	elseif scene == "game" then
 		update_game()
+	
+	elseif scene == "win" then
+	
+		update_win()
 		
 	end
-		
+	
 		
 end
 
@@ -296,7 +300,7 @@ function mapcollision( x , y ,w, h )
 
 end 
 -->8
--- win function
+-- win draw and update function
 
 function draw_win()
  cls()
@@ -305,6 +309,41 @@ function draw_win()
  sspr(40, 40, 8, 8, cx+32, cy+64, 32, 32)
  sspr(48, 40, 8, 8, cx+64, cy+64, 32, 32)
 end
+
+function update_win()
+
+-- code to restart the game 
+
+fcount += 1
+if fcount == 120 then
+
+	fcount = 0
+	score = 0 
+	winscore = 20
+	game_over = false
+	
+	
+	
+
+end 
+
+end 
+-->8
+-- loose draw and loose function
+
+function update_loose()
+
+
+
+
+end 
+
+
+function draw_loose()
+
+
+
+end 
 __gfx__
 000000000c77c77000aaaa0000000000566666656666666506666666666666650666666666666665066666666666666000000000000000000000000000000000
 000000000c74c4700a9999a000000000656666566666665605666666666666560566666666666656056666666666665005666666666666500000000000000000
