@@ -156,42 +156,66 @@ enemy3 = 67
 enemy4 = 67
 enemy5 = 67
 enemy6 = 67 
+enemy7 = 67
+enemy8 = 67
+enemy9 = 67
+enemy10 = 67
 --make spawn for enemy
 
  -- remember to multiply by 8
 	-- lenght of a box 
-enemy_x=-8
+enemy_x=-8  -- x axis 
 enemy_y=64
 
-enemy2_x=-8
+enemy2_x=-8     -- x axis
 enemy2_y=10 *  8
 
-enemy3_x=-8
+enemy3_x=-8    -- x axis
 enemy3_y=15 * 8
 
-enemy4_x=10 * 8 
+enemy4_x=10 * 8 -- y axis
 enemy4_y=-8
 
-enemy5_x=15 * 8
-enemy5_y=-8
+enemy5_x=15 * 8 -- y axis 
+enemy5_y=-8   
 
-enemy6_x=20 * 8 
+enemy6_x=20 * 8 -- y axis  
 enemy6_y=-8
+
+enemy7_x=-8  -- x axis
+enemy7_y=20 * 8
+
+enemy8_x=-8  -- x axis 
+enemy8_y=30 * 8 
+
+enemy9_x=30 * 8  -- y axis
+enemy9_y=-8
+
+enemy10_x=40 * 8 -- y axis 
+enemy10_y=-8
+
+
 
 function update_game()
 
  --movement for enemy
 	enemy_x+=1
-	enemy2_x+=1
+	enemy2_x+=6
 	enemy3_x+=1
+	enemy7_x+=4
+	enemy8_x+=6
 	
 	enemy4_y+=1
-	enemy5_y+=1
-	enemy6_y+=1
+	enemy5_y+=6
+	enemy6_y+=4
+	enemy9_y+=1
+	enemy10_y+=1
 	--127 is the first chunk of
 	-- screen, 370 is max of map
 	--maybe can detect walls here
 	--to reset
+	
+	-- x axis bots
 	if enemy_x > 370 then
 	   enemy_x = -8
 	end--if enemy goes past screen
@@ -203,6 +227,18 @@ function update_game()
 	if enemy3_x > 370 then
 	   enemy3_x = -8
 	end
+	
+	if enemy7_x > 370 then
+	   enemy7_x = -8
+	end
+	
+	if enemy8_x > 370 then
+	   enemy8_x = -8
+	end
+	
+	
+	-- y axis bots 
+	
 	
 	if enemy4_y > 370 then
 	   enemy4_y = -8
@@ -216,7 +252,17 @@ function update_game()
 	   enemy6_y = -8
 	end
 	
+	if enemy9_y > 370 then
+	   enemy9_y = -8
+	end
 	
+	if enemy10_y > 370 then
+	   enemy10_y = -8
+	end
+	
+	
+	
+	-- collision detection bots
 	if enemy_x == p.x then
 	
 		if enemy_y == p.y then
@@ -227,6 +273,109 @@ function update_game()
 				
 				
 	end
+	
+	
+		if enemy2_x == p.x then
+	
+		if enemy2_y == p.y then
+		
+			scene = "lose"
+		
+		end
+				
+				
+	end
+	
+		if enemy3_x == p.x then
+	
+		if enemy3_y == p.y then
+		
+			scene = "lose"
+		
+		end
+				
+				
+	end
+	
+		if enemy4_x == p.x then
+	
+		if enemy4_y == p.y then
+		
+			scene = "lose"
+		
+		end
+				
+				
+	end
+	
+		if enemy5_x == p.x then
+	
+		if enemy5_y == p.y then
+		
+			scene = "lose"
+		
+		end
+				
+				
+	end
+	
+		if enemy6_x == p.x then
+	
+		if enemy6_y == p.y then
+		
+			scene = "lose"
+		
+		end
+				
+				
+	end
+	
+		if enemy7_x == p.x then
+	
+		if enemy7_y == p.y then
+		
+			scene = "lose"
+		
+		end
+				
+				
+	end
+	
+		if enemy8_x == p.x then
+	
+		if enemy8_y == p.y then
+		
+			scene = "lose"
+		
+		end
+				
+				
+	end
+	
+		if enemy9_x == p.x then
+	
+		if enemy9_y == p.y then
+		
+			scene = "lose"
+		
+		end
+				
+				
+	end
+	
+		if enemy10_x == p.x then
+	
+		if enemy10_y == p.y then
+		
+			scene = "lose"
+		
+		end
+				
+				
+	end
+	
+	
+	
 	
 
 	--token collection
@@ -277,6 +426,10 @@ spr(enemy3, enemy3_x, enemy3_y)
 spr(enemy4, enemy4_x, enemy4_y)
 spr(enemy5, enemy5_x, enemy5_y)
 spr(enemy6, enemy6_x, enemy6_y)
+spr(enemy7, enemy7_x, enemy7_y)
+spr(enemy8, enemy8_x, enemy8_y)
+spr(enemy9, enemy9_x, enemy9_y)
+spr(enemy10, enemy10_x, enemy10_y)
 
 
 
