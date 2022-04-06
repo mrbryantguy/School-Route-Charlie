@@ -1,6 +1,8 @@
 pico-8 cartridge // http://www.pico-8.com
-version 35
+version 34
 __lua__
+-- sanik
+-- by circus bear games
 -- init
 
 function _init()
