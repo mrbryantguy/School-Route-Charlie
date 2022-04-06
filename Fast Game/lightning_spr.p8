@@ -59,6 +59,9 @@ function _draw()
 	elseif scene == "game" then
 	 draw_game()
 	 
+	elseif scene == "win" then
+	 draw_win()
+	 
 	end
 		
 		
@@ -162,14 +165,15 @@ function update_game()
 		local inputx = 0
 	local inputy = 0
 	
-	
- if(btnp(⬅️)) inputx -=4 -- movement left
-	if(btnp(⬅️)) p.f = 17 -- changing sprite when left
- if(btnp(➡️)) inputx +=4-- movement right
- if(btnp(➡️)) p.f = 1 -- changing sprite when right
- if(btnp(⬆️)) inputy -=4 -- movement up
- if(btnp(⬇️)) inputy +=4 -- movemement down 
-
+	if game_over != true then
+  if(btnp(⬅️)) inputx -=4 -- movement left
+	 if(btnp(⬅️)) p.f = 17 -- changing sprite when left
+  if(btnp(➡️)) inputx +=4-- movement right
+  if(btnp(➡️)) p.f = 1 -- changing sprite when right
+  if(btnp(⬆️)) inputy -=4 -- movement up
+  if(btnp(⬇️)) inputy +=4 -- movemement down 
+ end
+ 
 	movement(inputx,inputy)
 	
 	
@@ -201,6 +205,15 @@ end
 --score printing
 print('score: '..score, cx+2,cy+2,7)
 print(winscore..' left to win!',cx+2,cy+8,7)
+
+--game end logic
+if winscore == 0 then
+ game_over = true
+end
+
+if game_over == true then
+ scene = "win"
+end 
 
 end
 -->8
@@ -282,6 +295,16 @@ function mapcollision( x , y ,w, h )
 	return false
 
 end 
+-->8
+-- win function
+
+function draw_win()
+ cls()
+ sspr(40, 32, 8, 8, cx+32, cy+32, 32, 32)
+ sspr(48, 32, 8, 8, cx+64, cy+32, 32, 32)
+ sspr(40, 40, 8, 8, cx+32, cy+64, 32, 32)
+ sspr(48, 40, 8, 8, cx+64, cy+64, 32, 32)
+end
 __gfx__
 000000000c77c77000aaaa0000000000566666656666666506666666666666650666666666666665066666666666666000000000000000000000000000000000
 000000000c74c4700a9999a000000000656666566666665605666666666666560566666666666656056666666666665005666666666666500000000000000000
