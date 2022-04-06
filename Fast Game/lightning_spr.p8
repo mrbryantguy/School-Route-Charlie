@@ -254,7 +254,7 @@ function mapcollision( x , y ,w, h )
 	s1 = mget(x / 8 , y / 8)
 	s2 = mget((x+w-1 ) / 8 , y / 8)
 	s3 = mget(x / 8, (y + w -1) /8)
-	s4 = mget((x+w-1) / 8 , (y+w -1 ) /16)
+	s4 = mget((x+w-1) / 8 , (y+w -1 ) /8)
 
 
 	if fget(s1 , 0) then 
