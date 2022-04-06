@@ -135,16 +135,42 @@ end
 -- game functions draw and upd
 
 
---enemy sprite
+--enemy sprites
 enemy = 67
+enemy2 = 67
+enemy3 = 67 
+enemy4 = 67
+enemy5 = 67
+enemy6 = 67 
 --make spawn for enemy
 enemy_x=-8
 enemy_y=59
+
+enemy2_x=-8
+enemy2_y=150
+
+enemy3_x=-8
+enemy3_y=180
+
+enemy4_x=54
+enemy4_y=-8
+
+enemy5_x=150
+enemy5_y=-8
+
+enemy6_x=200
+enemy6_y=-8
 
 function update_game()
 
  --movement for enemy
 	enemy_x+=1
+	enemy2_x+=1
+	enemy3_x+=1
+	
+	enemy4_y+=1
+	enemy5_y+=1
+	enemy6_y+=1
 	--127 is the first chunk of
 	-- screen, 370 is max of map
 	--maybe can detect walls here
@@ -152,6 +178,26 @@ function update_game()
 	if enemy_x > 370 then
 	   enemy_x = -8
 	end--if enemy goes past screen
+	
+	if enemy2_x > 370 then
+	   enemy2_x = -8
+	end
+	
+	if enemy3_x > 370 then
+	   enemy3_x = -8
+	end
+	
+	if enemy4_y > 370 then
+	   enemy4_y = -8
+	end
+	
+	if enemy5_y > 370 then
+	   enemy5_y = -8
+	end
+	
+	if enemy6_y > 370 then
+	   enemy6_y = -8
+	end
 	
 	--wall collision
 	
@@ -191,14 +237,22 @@ end
 
 function draw_game()
 
-cls()
+cls() -- cleaning screen
 
-camera (cx , cy)
+camera (cx , cy) -- setting up camera
 
-map(mx,my)
+map(mx,my) -- map writing
 
-spr(p.f , p.x ,p.y)
-spr(enemy, enemy_x, enemy_y)
+spr(p.f , p.x ,p.y) -- player sprite
+spr(enemy, enemy_x, enemy_y) -- enemy sprite 
+
+spr(enemy2, enemy2_x, enemy2_y)
+spr(enemy3, enemy3_x, enemy3_y)
+spr(enemy4, enemy4_x, enemy4_y)
+spr(enemy5, enemy5_x, enemy5_y)
+spr(enemy6, enemy6_x, enemy6_y)
+
+
 
 for coin in all (coins) do
 	spr(coin.f, coin.x, coin.y)
