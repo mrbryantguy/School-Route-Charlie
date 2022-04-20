@@ -47,12 +47,21 @@ function _init()
  }
  
 	
+	--- map x and y base loc
+	-- declaring var 
+	
 	mx = 0 --- map x 
 	my = 0 --- map y 
+	
+	-- camera x and y loc
+	-- declaring var
 	
 	cx = 0 -- camera x 
 	cy = 0 -- camera y 
 	
+	
+	
+	 --grav and fric declariation
 	gravity=0.3
 	friction=0.85
 	
@@ -84,7 +93,17 @@ function _update()
 	-- if we are in game scene	
 	elseif scene == "game" then 
 		update_game()
+	
+	-- if we are in game2 scene	
+	elseif scene == "game2" then
+		update_game2()
 		
+	-- if we are in game3 scene 	
+	elseif scene == "game3" then
+		update_game3()
+			
+	
+	-- if we are in end scene 
 	elseif scene == "end" then
 		update_end()
 		
@@ -112,10 +131,19 @@ function _draw()
 	elseif scene == "menu" then 
 		draw_menu()
 	
-	-- uf we are on game
+	-- uf we are on game scene
 	elseif scene == "game" then
 	draw_game()
 	
+	-- if we are on game2 scene
+	elseif scene == "game2" then
+		draw_game2()
+	
+	-- if we are on game 3 scene
+	elseif sceme == "game3" then
+		draw_game3()
+	
+	-- if we are on end  scene
 	elseif scene == "end" then
 	draw_end()
 	
@@ -148,6 +176,8 @@ function update_menu()
 	end 	
 	
 end  -- end update menu 
+
+
 
 
 -- code from update scr1.p8
@@ -202,6 +232,31 @@ player_update()
 
 end
 
+-- update second game 
+
+function update_game2()
+
+
+
+
+end
+
+
+-- update third game 
+
+function update_game3()
+
+
+
+
+
+
+end 
+
+
+
+
+
 -- update when  scene = end 
 
 function update_end()
@@ -254,7 +309,33 @@ function draw_game()
 	--prints the time at the top right
 	--print(q)
 
+end
+
+	-- draw second level
+	
+function draw_game2()
+
+cls()
+camera(0,0)
+
+print("here is game 2" , 30 , 60 )
+
+
+
+end
+
+-- draw third game 
+
+function draw_game3()
+
+
+
+
+
 end 
+
+
+ 
 
 -- when scene end is reached 
 function draw_end()
@@ -530,7 +611,7 @@ function player_update()
 	
 	if fget(cobj , 2 ) then
 	
-		scene = "end"
+		scene = "game2"
 	
 	end
 	
