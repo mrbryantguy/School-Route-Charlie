@@ -208,9 +208,9 @@ snow_x-=1
 
 --here is to end game if player
 --touches the snowball
-if flr((snow_x / 10)) - 1 == p_x then
-  cls()
-  draw_end()
+if flr((snow_x / 10)) - 1 == flr(p.x/10) then
+  --cls()
+  draw_gameover()
 end--if the player touches snow
 
 
@@ -331,8 +331,10 @@ function draw_game()
 
 --prints x of player and snowball
 	--print(flr(p.x/10), cx, cy - 24)
- print(flr(p.x/10), cx, cy - 24)
-	print(flr(snow_x / 10), cx, cy)
+ --print(flr(p.x/10), cx, cy - 24)
+	--print(flr(snow_x / 10), cx, cy)
+	print(flr(snow_y / 10), cx, cy-24)
+	print(flr(p.y / 10), cx, cy)
 
 -- print(flr(p.x/10), snow_x)
 	--prints the time at the top right
@@ -392,7 +394,14 @@ function draw_end()
 
 end 
 
-
+--gameover
+function draw_gameover()
+  cls()
+  camera (0,0)
+  cls()
+  
+  print("you died", 30, 63, 2)
+end--draw_gameover
 
 -->8
 --splash screen
