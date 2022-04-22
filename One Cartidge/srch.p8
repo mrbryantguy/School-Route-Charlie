@@ -1,5 +1,5 @@
 pico-8 cartridge // http://www.pico-8.com
-version 36
+version 34
 __lua__
 --init
 
@@ -110,7 +110,6 @@ function _update()
 end
 -->8
 --main draw
-
 -- remember for specific scenes
 -- create a specific draw func
 -- to keep the code clean and 
@@ -128,6 +127,21 @@ function _draw()
 	-- uf we are on game scene
 	elseif scene == "game" then
 	 draw_game()
+	 
+	 
+	 --snowball spawn
+  random = flr(rnd(50))
+	print(random)
+	if flr(p.x/10) > 0 then
+	 if random < 2 then
+	  spr(ball.sp , cx + 120, 56, ball.w , ball.h)
+		 	
+	 end -- ball spawn --
+ end -- p.x check --
+ 
+ 
+ 
+ 
 	
 	-- if we are on game2 scene
 	elseif scene == "game2" then
@@ -146,6 +160,12 @@ function _draw()
 end -- end draw
 -->8
 --update funcitons
+
+--sprite for the ball
+snow = 11
+snow_x = 300
+snow_y =56
+
 
 function update_logo()
  fcount += 1  -- from splash.p8
@@ -182,7 +202,19 @@ foward = true
 function update_game()
 
 player_update()
-	
+snowball_update()
+snow_x-=1
+
+
+--here is to end game if player
+--touches the snowball
+if flr((snow_x / 10)) - 1 == p_x then
+  cls()
+  draw_end()
+end--if the player touches snow
+
+
+
 --	anim_time=0
 	anim_wait=.35
 	
@@ -193,7 +225,7 @@ player_update()
 	c = 4
 	x = 0
 	q = -1
-	x=print( time() - anim_time) 
+	--print(9999) 
 	 if time() - anim_time > anim_wait then
     if p.sp == 4 then
       p.sp+=2
@@ -222,6 +254,17 @@ player_update()
       --anim_time=0
    -- end
   end	--player_animate()
+  
+  
+  --snowball spawn
+ -- random = flr(rnd(50))
+--	print(random)
+--	if flr(p.x/10) > 0 then
+	 --if random < 2 then
+	  --spr(ball.sp , cx + 120, 56, ball.w , ball.h)
+		 	
+	 --end -- ball spawn --
+ --end -- p.x check --
  
 end
 
@@ -283,18 +326,27 @@ function draw_game()
 	map(mx,my)
 	spr(p.sp, p.x, p.y - 14, p.w, p.h)
 
-	print(flr(p.x/10), cx, cy - 24)
+ spr(snow, snow_x,snow_y)
+
+
+--prints x of player and snowball
+	--print(flr(p.x/10), cx, cy - 24)
+ print(flr(p.x/10), cx, cy - 24)
+	print(flr(snow_x / 10), cx, cy)
+
+-- print(flr(p.x/10), snow_x)
 	--prints the time at the top right
 	--print(q)
 	
 	-- snowball drawing -- 
-	random = flr(rnd(50))
-	print(random)
-	if flr(p.x/10) > 0 then
-	 if random < 2 then
-	  spr(ball.sp , cx + 120, 56, ball.w , ball.h)
-	 end -- ball spawn --
- end -- p.x check -- 
+	--the random says when it spawns
+--	random = flr(rnd(50))
+--	print(random)
+--	if flr(p.x/10) > 0 then
+--	if random < 2 then
+	 -- spr(ball.sp , cx + 120, 56, ball.w , ball.h)
+	 --end -- ball spawn --
+ --end -- p.x check -- 
 end
 
 	-- draw second level
@@ -617,6 +669,9 @@ end
 	--end
 --end
 --end
+function snowball_update()
+  ball.x+=1
+end--snoeball_update
 -->8
 -- ice ball logic 
 
