@@ -135,7 +135,7 @@ function _draw()
 	 draw_game()
 	 
 	 
-	 --snowball spawn
+	 --snow  spawn
   random = flr(rnd(50))
 	print(random)
 	if flr(p.x/10) > 0 then
@@ -225,7 +225,7 @@ if flr((snow_x / 10)) - 1 == flr(p.x/10) then
   ballframe += 1
   
   
-  if ballframe >1 then
+  if ballframe >5 then
   lives -= 1
   
   ballframe = 0
