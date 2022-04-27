@@ -1,5 +1,5 @@
 pico-8 cartridge // http://www.pico-8.com
-version 34
+version 36
 __lua__
 --init
 
@@ -68,7 +68,7 @@ function _init()
 	framecount = 0
 	
 		
-	
+	ballframe = 0
 		
 end 
 		
@@ -217,10 +217,24 @@ snow_x-=1
 
 --here is to end game if player
 --touches the snowball
+
+
 if flr((snow_x / 10)) - 1 == flr(p.x/10) then
   --cls()
+  
+  ballframe += 1
+  
+  
+  if ballframe >1 then
   lives -= 1
-  draw_gameover()
+  
+  ballframe = 0
+  
+  end
+  --draw_gameover()
+  
+  
+  
 end--if the player touches snow
 
 
