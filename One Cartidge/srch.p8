@@ -135,14 +135,23 @@ function _draw()
 	 draw_game()
 	 
 	 
-	 --snow  spawn
+	 --snow ball random   spawn
+	
+	
+	
+	
   random = flr(rnd(50))
 	print(random)
-	if flr(p.x/10) > 0 then
-	 if random < 2 then
+	if flr(p.x/10) > 0 and flagball == false then
+	 if random < 2  and flagball == false then
 	  spr(ball.sp , cx + 120, 56, ball.w , ball.h)
 		 	
+		 	flagball = true
+		 		
 	 end -- ball spawn --
+	 
+	 
+	 
  end -- p.x check --
  
  
@@ -211,8 +220,14 @@ foward = true
 function update_game()
 
 player_update()
-snowball_update()
-snow_x-=1
+--snowball_update()
+-- snow ball update was drawing
+-- the error ball on the corner 
+-- idk the functionality 
+-- change made by alexis 
+
+
+snow_x-=1  -- speed of the ball 
 
 
 --here is to end game if player
@@ -720,12 +735,8 @@ end
 --end
 function snowball_update()
   ball.x+=1
+  
 end--snoeball_update
--->8
--- ice ball logic 
-
-function ball() 
-end 
 __gfx__
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000007777000000000c700000007ccc7cccc000000c
 0000000000000000000040000000000000000444444400000000044444440000000004444444000000000000071111700000007c7c00000077cccc7cc700007c
