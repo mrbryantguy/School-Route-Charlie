@@ -162,6 +162,14 @@ end -- end draw
 snow = 10
 snow_x = 300
 snow_y =56
+s1x = 400
+s2x = 500
+s3x = 600
+s4x = 700
+s5x = 800
+s6x = 900
+s7x = 1000
+
 
 
 function update_logo()
@@ -206,34 +214,277 @@ player_update()
 -- change made by alexis 
 
 
-
+-- change this number to change
+-- the speed of a specific ball
 
 snow_x-=1  -- speed of the ball 
+s1x -=1
+s2x -=1
+s3x -=1
+s4x -=1
+s5x -=1
+s6x -=1
+s6x -=1
+s7x -=1
+
+
+--this resets the balls when 
+
+if snow_x < p.x then
+
+snow_x = flr(p.x + 200)
+
+end
+
+if s1x < p.x then
+
+	s1x = flr(p.x + 300)
+
+end
+
+if s2x < p.x then
+
+	s2x = flr(p.x + 400)
+
+end
+
+if s3x < p.x then
+
+	s3x = flr(p.x + 500)
+
+end
+
+if s4x < p.x then
+
+	s4x = flr(p.x + 600)
+
+end
+
+if s5x < p.x then
+
+	s5x = flr(p.x + 700)
+
+end
+
+if s6x < p.x then
+
+	s6x = flr(p.x + 800)
+
+end
+
+if s7x < p.x then
+
+	s7x = flr(p.x + 900)
+
+end
+
 
 
 --here is to end game if player
 --touches the snowball
 
+-- this is wat actually gets collisions
+-- needs to be fixed to get all 4 frames 
+-- of the ball
 
-if flr((snow_x / 10)) - 1 == flr(p.x/10) then
+-- collisions 
+
+--edited by alexis
+-- are kinda working
+-- fix some parameters 
+-- location 
+
+
+-- example 
+-- snowball is at y 62 all time
+-- size is 16 pixels
+-- y loc in pico 8 is from top to
+-- bottom going positive
+-- we know the ball is between
+-- 62 and 46 y val at all times 
+
+-- if player is at 56 y 
+
+-- example
+-- snowball is x 350
+-- and the snowball is 16 pixel
+-- wide 350 to 366 pixels where
+-- snowball is at any moment
+-- player is at 357
+-- if 350 >= 357 and 366 <= 357
+
+--lifeframe
+-- cahnge this varialbe to 
+-- modify the invincibilty
+-- whem the ball hits
+
+lifeframe = 2 
+
+								-- 10             --12                 12           14      
+if flr((snow_x / 8 ))  <= flr(p.x/8) and  flr (p.x /8) <= flr(snow_x/8) + 1   then
   --cls()
-  
-  ballframe += 1
-  
-  
-  if ballframe >5 then
-  lives -= 1
-  
-  ballframe = 0
-  
-  end
-  --draw_gameover()
+  if flr ((snow_y / 8)) >= flr(p.y / 8) and flr (snow_y / 8) - 1 <= flr(p.y / 8) then
   
   
+  	ballframe += 1
   
+  
+  	if ballframe > lifeframe then
+  	lives -= 1
+  
+  	ballframe = 0
+  
+  end -- end snow_ y if
+  
+  end -- end snow_x if
+
 end--if the player touches snow
 
 
+if flr((s1x / 8 ))  <= flr(p.x/8) and  flr (p.x /8) <= flr(s1x/8) + 1   then
+  --cls()
+  if flr ((snow_y / 8)) >= flr(p.y / 8) and flr (snow_y / 8) - 1 <= flr(p.y / 8) then
+  
+  
+  	ballframe += 1
+  
+  
+  	if ballframe > lifeframe then
+  	lives -= 1
+  
+  	ballframe = 0
+  
+  end -- end snow_ y if
+  
+  end -- end snow_x if
+
+end--if the player touches snow
+
+
+if flr((s2x / 8 ))  <= flr(p.x/8) and  flr (p.x /8) <= flr(s2x/8) + 1   then
+  --cls()
+  if flr ((snow_y / 8)) >= flr(p.y / 8) and flr (snow_y / 8) - 1 <= flr(p.y / 8) then
+  
+  
+  	ballframe += 1
+  
+  
+  	if ballframe > lifeframe then
+  	lives -= 1
+  
+  	ballframe = 0
+  
+  end -- end snow_ y if
+  
+  end -- end snow_x if
+
+end--if the player touches snow
+
+if flr((s3x / 8 ))  <= flr(p.x/8) and  flr (p.x /8) <= flr(s3x/8) + 1   then
+  --cls()
+  if flr ((snow_y / 8)) >= flr(p.y / 8) and flr (snow_y / 8) - 1 <= flr(p.y / 8) then
+  
+  
+  	ballframe += 1
+  
+  
+  	if ballframe > lifeframe then
+  	lives -= 1
+  
+  	ballframe = 0
+  
+  end -- end snow_ y if
+  
+  end -- end snow_x if
+
+end--if the player touches snow
+
+
+
+
+if flr((s4x / 8 ))  <= flr(p.x/8) and  flr (p.x /8) <= flr(s4x/8) + 1   then
+  --cls()
+  if flr ((snow_y / 8)) >= flr(p.y / 8) and flr (snow_y / 8) - 1 <= flr(p.y / 8) then
+  
+  
+  	ballframe += 1
+  
+  
+  	if ballframe > lifeframe then
+  	lives -= 1
+  
+  	ballframe = 0
+  
+  end -- end snow_ y if
+  
+  end -- end snow_x if
+
+end--if the player touches snow
+
+
+if flr((s5x / 8 ))  <= flr(p.x/8) and  flr (p.x /8) <= flr(s5x/8) + 1   then
+  --cls()
+  if flr ((snow_y / 8)) >= flr(p.y / 8) and flr (snow_y / 8) - 1 <= flr(p.y / 8) then
+  
+  
+  	ballframe += 1
+  
+  
+  	if ballframe > lifeframe then
+  	lives -= 1
+  
+  	ballframe = 0
+  
+  end -- end snow_ y if
+  
+  end -- end snow_x if
+
+end--if the player touches snow
+
+
+if flr((s6x / 8 ))  <= flr(p.x/8) and  flr (p.x /8) <= flr(s6x/8) + 1   then
+  --cls()
+  if flr ((snow_y / 8)) >= flr(p.y / 8) and flr (snow_y / 8) - 1 <= flr(p.y / 8) then
+  
+  
+  	ballframe += 1
+  
+  
+  	if ballframe > lifeframe then
+  	lives -= 1
+  
+  	ballframe = 0
+  
+  end -- end snow_ y if
+  
+  end -- end snow_x if
+
+end--if the player touches snow
+
+
+if flr((s7x / 8 ))  <= flr(p.x/8) and  flr (p.x /8) <= flr(s7x/8) + 1   then
+  --cls()
+  if flr ((snow_y / 8)) >= flr(p.y / 8) and flr (snow_y / 8) - 1 <= flr(p.y / 8) then
+  
+  
+  	ballframe += 1
+  
+  
+  	if ballframe > lifeframe then
+  	lives -= 1
+  
+  	ballframe = 0
+  
+  end -- end snow_ y if
+  
+  end -- end snow_x if
+
+end--if the player touches snow
+
+
+
+
+-- end collisions 
 
 --	anim_time=0
 	anim_wait=.35
@@ -330,6 +581,17 @@ function update_gover()
 	 
 	 p.y = 20
 	 
+	 -- reseting ball locaiton 
+	 snow_x = 300 
+	 s1x = 400
+	 s2x = 500
+	 s3x = 600
+	 s4x = 700
+	 s5x = 800
+	 s6x = 900
+	 s7x = 1000
+	 
+	 
 	
 	elseif lastscene == "game2" then
 	
@@ -408,20 +670,33 @@ function draw_game()
 		-- function in the correct area
  random = flr(rnd(50))
 	print(random, cx , cy)
-	if flr(p.x/10) > 0 and flagball == false then
-	 if random < 2  and flagball == false then
-	  spr(ball.sp , cx + 120, 56, ball.w , ball.h)
-		 	
-		 	flagball = true
-		end -- end random if
-	end --end flr if	
-	  -- ball spawn --
+
+
+-- debug print statements 
+--	print('snowball x :'..  flr(snow_x / 8) , p.x ,p.y + 5)
+--	print('player x:'..  flr(p.x / 8) , p.x , p.y+ 20)
+--	print('snowball y:'..  flr(snow_y/ 8) , p.x , p.y + 40)
+--	print('snowball y:'..  flr((snow_y -16) / 8) , p.x , p.y + 50)
+--	print('player y:'..  flr(p.y / 8) , p.x , p.y + 60 )
+
+-- end debug
 	 
 		-- function in the correct area end 
 
 	-- this is what actualy is printing the snow ball
- spr(snow, snow_x ,snow_y - 8 , 2 ,2 )
  
+ spr(snow, snow_x ,snow_y - 8 , 2 ,2 )
+ spr(snow, s1x ,snow_y - 8 , 2 ,2 )
+	spr(snow, s2x ,snow_y - 8 , 2 ,2 )
+ spr(snow, s3x ,snow_y - 8 , 2 ,2 )
+ spr(snow, s4x ,snow_y - 8 , 2 ,2 )
+ spr(snow, s5x ,snow_y - 8 , 2 ,2 )
+ spr(snow, s6x ,snow_y - 8 , 2 ,2 )
+ spr(snow, s7x ,snow_y - 8 , 2 ,2 )
+	
+
+ 
+ -- cam hardcode the # of balls 
  -- end what actualy is printing the rolling snowball
 
 
@@ -468,11 +743,11 @@ map(mx, my)
 camera(8,18 * 8 )
 
 -- sprite changed to swiming
-p.sp = 38
 
-p.y = 18* 8 
 
-spr(p.sp, 4 * 8, 26 * 8 , p.w, p.h)
+print(p.x , p.y , 0 , 26*8)
+
+spr(p.sp, p.x, p.y  , p.w, p.h)
 
 
 print("here is game 2" , 4 * 8 , 26*8 )
@@ -651,6 +926,11 @@ function wallcoll(xloc , yloc , wloc , hloc)
 
 
 end 
+
+
+
+-- snowball colission function
+
 -->8
 -- player update
 -- this code is from src1.p8
@@ -793,6 +1073,11 @@ function player_update()
  if fget(cobj , 2 ) then
 	
 		scene = "game2"
+		
+		
+		-- setting the value for next
+		-- location of the player 
+
 	
 	end
 end
