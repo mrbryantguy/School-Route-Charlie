@@ -220,62 +220,81 @@ player_update()
 snow_x-=1  -- speed of the ball 
 s1x -=1
 s2x -=1
-s3x -=1
-s4x -=1
-s5x -=1
-s6x -=1
-s6x -=1
-s7x -=1
+s3x -=2
+s4x -=2
+s5x -=3
+s6x -=3
+s6x -=4
+s7x -=5
+
+local spawnlimit = 950
 
 
 --this resets the balls when 
 
 if snow_x < p.x then
-
-snow_x = flr(p.x + 200)
-
+	
+	if flr(p.x + 200) < spawnlimit then
+	snow_x = flr(p.x + 200)
+	end
+	
 end
 
 if s1x < p.x then
-
+	
+	if flr(p.x + 300) < spawnlimit then
 	s1x = flr(p.x + 300)
+	
+	end
 
 end
 
 if s2x < p.x then
-
+	
+	if flr(p.x + 400 < spawnlimit) then
 	s2x = flr(p.x + 400)
+	end
 
 end
 
 if s3x < p.x then
 
+	if flr(p.x + 500) < spawnlimit then
 	s3x = flr(p.x + 500)
-
+	end
+	
 end
 
 if s4x < p.x then
 
+	if flr(p.x + 600) < spawnlimit then
 	s4x = flr(p.x + 600)
+	end
 
 end
 
 if s5x < p.x then
-
+	
+	if flr(p.x + 700) < spawnlimit then
 	s5x = flr(p.x + 700)
+	end
 
 end
 
 if s6x < p.x then
 
+	if flr(p.x + 800) < spawnlimit then
 	s6x = flr(p.x + 800)
+	end
 
 end
 
 if s7x < p.x then
 
+	if	flr (p.x + 900) < spawnlimit then
 	s7x = flr(p.x + 900)
-
+	end
+	
 end
 
 
