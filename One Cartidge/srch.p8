@@ -688,7 +688,7 @@ function draw_game()
 
 		-- function in the correct area
  random = flr(rnd(50))
-	print(random, cx , cy)
+
 
 
 -- debug print statements 
@@ -697,6 +697,7 @@ function draw_game()
 --	print('snowball y:'..  flr(snow_y/ 8) , p.x , p.y + 40)
 --	print('snowball y:'..  flr((snow_y -16) / 8) , p.x , p.y + 50)
 --	print('player y:'..  flr(p.y / 8) , p.x , p.y + 60 )
+-- print(random, cx , cy)
 
 -- end debug
 	 
