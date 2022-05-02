@@ -1,5 +1,5 @@
 pico-8 cartridge // http://www.pico-8.com
-version 34
+version 36
 __lua__
 --init
 
@@ -563,6 +563,9 @@ end
 
 function update_game2()
 
+local spawnlimit = 950
+
+
 player_update2()
 shark1x -= 2
 shark2x -= 2
@@ -578,9 +581,9 @@ shark10x -= 7
 shark11x -= 8
 shark12x -= 8
 shark13x -= 9
-shark14x -= 10
+shark14x -= 8
 
-local spawnlimit = 950
+local spawnlimit = 1300
 
 --this resets the sharks when 
 
@@ -592,7 +595,7 @@ local spawnlimit = 950
 	
 --end
 
-if shark1x < p2.x then
+if shark1x < p2.x - 10 then
 	
 	if flr(p2.x + 300) < spawnlimit then
 	shark1x = flr(p2.x + 300)
@@ -601,7 +604,7 @@ if shark1x < p2.x then
 
 end
 
-if shark2x < p2.x then
+if shark2x < p2.x - 10 then
 	
 	if flr(p2.x + 400 < spawnlimit) then
 	shark2x = flr(p2.x + 400)
@@ -609,7 +612,7 @@ if shark2x < p2.x then
 
 end
 
-if shark3x < p2.x then
+if shark3x < p2.x - 10then
 
 	if flr(p2.x + 500) < spawnlimit then
 	shark3x = flr(p2.x + 500)
@@ -617,7 +620,7 @@ if shark3x < p2.x then
 	
 end
 
-if shark4x < p2.x then
+if shark4x < p2.x - 10 then
 
 	if flr(p2.x + 600) < spawnlimit then
 	shark4x = flr(p2.x + 600)
@@ -625,7 +628,7 @@ if shark4x < p2.x then
 
 end
 
-if shark5x < p2.x then
+if shark5x < p2.x - 10 then
 	
 	if flr(p2.x + 700) < spawnlimit then
 	shark5x = flr(p2.x + 700)
@@ -633,7 +636,7 @@ if shark5x < p2.x then
 
 end
 
-if shark6x < p2.x then
+if shark6x < p2.x - 10 then
 
 	if flr(p2.x + 800) < spawnlimit then
 	shark6x = flr(p2.x + 800)
@@ -641,7 +644,7 @@ if shark6x < p2.x then
 
 end
 
-if shark7x < p2.x then
+if shark7x < p2.x - 10 then
 
 	if	flr (p2.x + 900) < spawnlimit then
 	shark7x = flr(p2.x + 900)
@@ -649,7 +652,7 @@ if shark7x < p2.x then
 	
 	
 	end
-	if shark8x < p2.x then
+	if shark8x < p2.x - 10  then
 	
 	if flr(p2.x + 300) < spawnlimit then
 	shark8x = flr(p2.x + 300)
@@ -658,7 +661,7 @@ if shark7x < p2.x then
 
 end
 
-if shark9x < p2.x then
+if shark9x < p2.x - 10 then
 	
 	if flr(p2.x + 400 < spawnlimit) then
 	shark9x = flr(p2.x + 400)
@@ -666,7 +669,7 @@ if shark9x < p2.x then
 
 end
 
-if shark10x < p2.x then
+if shark10x < p2.x - 10 then
 
 	if flr(p2.x + 500) < spawnlimit then
 	shark10x = flr(p2.x + 500)
@@ -674,7 +677,7 @@ if shark10x < p2.x then
 	
 end
 
-if shark11x < p2.x then
+if shark11x < p2.x - 10  then
 
 	if flr(p2.x + 600) < spawnlimit then
 	shark11x = flr(p2.x + 600)
@@ -682,7 +685,7 @@ if shark11x < p2.x then
 
 end
 
-if shark12x < p2.x then
+if shark12x < p2.x - 10  then
 	
 	if flr(p2.x + 700) < spawnlimit then
 	shark12x = flr(p2.x + 700)
@@ -690,7 +693,7 @@ if shark12x < p2.x then
 
 end
 
-if shark13x < p2.x then
+if shark13x < p2.x -10 then
 
 	if flr(p2.x + 800) < spawnlimit then
 	shark13x = flr(p2.x + 800)
@@ -698,12 +701,265 @@ if shark13x < p2.x then
 
 end
 
-if shark14x < p2.x then
+if shark14x < p2.x - 10 then
+	
+		
+	if	flr (p2.x + 500) < spawnlimit then
+		shark14x = flr(p2.x + 500)
+	end
+	
+end
+	
+	
+	------- collisions 
+	
+if flr((shark14x / 8 ))  <= flr(p2.x/8) and  flr (p2.x /8) <= flr(shark14x/8) + 1   then
+  --cls()
+  if flr (((shark_y+97) / 8)) >= flr(p2.y / 8) and flr ((shark_y + 97) / 8) - 1 <= flr(p2.y / 8) then
+  
+  	ballframe += 1
+   
+  	if ballframe > lifeframe then
+  	lives -= 1
+  
+  	ballframe = 0
+  
+  end -- end snow_ y if
+  
+  end -- end snow_x if
 
-	if	flr (p2.x + 900) < spawnlimit then
-	shark14x = flr(p2.x + 900)
-	end
-	end
+end
+
+if flr((shark1x / 8 ))  <= flr(p2.x/8) and  flr (p2.x /8) <= flr(shark1x/8) + 1   then
+  --cls()
+  if flr (((shark_y+80) / 8)) >= flr(p2.y / 8) and flr ((shark_y + 80) / 8) - 1 <= flr(p2.y / 8) then
+  
+  	ballframe += 1
+   
+  	if ballframe > lifeframe then
+  	lives -= 1
+  
+  	ballframe = 0
+  
+  end -- end snow_ y if
+  
+  end -- end snow_x if
+
+end
+
+if flr((shark2x / 8 ))  <= flr(p2.x/8) and  flr (p2.x /8) <= flr(shark2x/8) + 1   then
+  --cls()
+  if flr (((shark_y+90) / 8)) >= flr(p2.y / 8) and flr ((shark_y + 90) / 8) - 1 <= flr(p2.y / 8) then
+  
+  	ballframe += 1
+   
+  	if ballframe > lifeframe then
+  	lives -= 1
+  
+  	ballframe = 0
+  
+  end -- end snow_ y if
+  
+  end -- end snow_x if
+
+end
+
+if flr((shark3x / 8 ))  <= flr(p2.x/8) and  flr (p2.x /8) <= flr(shark3x/8) + 1   then
+  --cls()
+  if flr (((shark_y-11) / 8)) >= flr(p2.y / 8) and flr ((shark_y -11) / 8) - 1 <= flr(p2.y / 8) then
+  
+  	ballframe += 1
+   
+  	if ballframe > lifeframe then
+  	lives -= 1
+  
+  	ballframe = 0
+  
+  end -- end snow_ y if
+  
+  end -- end snow_x if
+
+end
+
+if flr((shark4x / 8 ))  <= flr(p2.x/8) and  flr (p2.x /8) <= flr(shark4x/8) + 1   then
+  --cls()
+  if flr (((shark_y+12) / 8)) >= flr(p2.y / 8) and flr ((shark_y + 12) / 8) - 1 <= flr(p2.y / 8) then
+  
+  	ballframe += 1
+   
+  	if ballframe > lifeframe then
+  	lives -= 1
+  
+  	ballframe = 0
+  
+  end -- end snow_ y if
+  
+  end -- end snow_x if
+
+end
+
+if flr((shark5x / 8 ))  <= flr(p2.x/8) and  flr (p2.x /8) <= flr(shark5x/8) + 1   then
+  --cls()
+  if flr (((shark_y+22) / 8)) >= flr(p2.y / 8) and flr ((shark_y + 22) / 8) - 1 <= flr(p2.y / 8) then
+  
+  	ballframe += 1
+   
+  	if ballframe > lifeframe then
+  	lives -= 1
+  
+  	ballframe = 0
+  
+  end -- end snow_ y if
+  
+  end -- end snow_x if
+
+end
+
+if flr((shark6x / 8 ))  <= flr(p2.x/8) and  flr (p2.x /8) <= flr(shark6x/8) + 1   then
+  --cls()
+  if flr (((shark_y+40) / 8)) >= flr(p2.y / 8) and flr ((shark_y + 40) / 8) - 1 <= flr(p2.y / 8) then
+  
+  	ballframe += 1
+   
+  	if ballframe > lifeframe then
+  	lives -= 1
+  
+  	ballframe = 0
+  
+  end -- end snow_ y if
+  
+  end -- end snow_x if
+
+end
+
+if flr((shark7x / 8 ))  <= flr(p2.x/8) and  flr (p2.x /8) <= flr(shark7x/8) + 1   then
+  --cls()
+  if flr (((shark_y+25) / 8)) >= flr(p2.y / 8) and flr ((shark_y + 25) / 8) - 1 <= flr(p2.y / 8) then
+  
+  	ballframe += 1
+   
+  	if ballframe > lifeframe then
+  	lives -= 1
+  
+  	ballframe = 0
+  
+  end -- end snow_ y if
+  
+  end -- end snow_x if
+
+end
+
+if flr((shark8x / 8 ))  <= flr(p2.x/8) and  flr (p2.x /8) <= flr(shark8x/8) + 1   then
+  --cls()
+  if flr (((shark_y+80) / 8)) >= flr(p2.y / 8) and flr ((shark_y + 80) / 8) - 1 <= flr(p2.y / 8) then
+  
+  	ballframe += 1
+   
+  	if ballframe > lifeframe then
+  	lives -= 1
+  
+  	ballframe = 0
+  
+  end -- end snow_ y if
+  
+  end -- end snow_x if
+
+end
+
+if flr((shark9x / 8 ))  <= flr(p2.x/8) and  flr (p2.x /8) <= flr(shark9x/8) + 1   then
+  --cls()
+  if flr (((shark_y+27) / 8)) >= flr(p2.y / 8) and flr ((shark_y + 27) / 8) - 1 <= flr(p2.y / 8) then
+  
+  	ballframe += 1
+   
+  	if ballframe > lifeframe then
+  	lives -= 1
+  
+  	ballframe = 0
+  
+  end -- end snow_ y if
+  
+  end -- end snow_x if
+
+end
+
+if flr((shark10x / 8 ))  <= flr(p2.x/8) and  flr (p2.x /8) <= flr(shark10x/8) + 1   then
+  --cls()
+  if flr (((shark_y+32) / 8)) >= flr(p2.y / 8) and flr ((shark_y + 32) / 8) - 1 <= flr(p2.y / 8) then
+  
+  	ballframe += 1
+   
+  	if ballframe > lifeframe then
+  	lives -= 1
+  
+  	ballframe = 0
+  
+  end -- end snow_ y if
+  
+  end -- end snow_x if
+
+end
+
+if flr((shark11x / 8 ))  <= flr(p2.x/8) and  flr (p2.x /8) <= flr(shark11x/8) + 1   then
+  --cls()
+  if flr (((shark_y+42) / 8)) >= flr(p2.y / 8) and flr ((shark_y + 42) / 8) - 1 <= flr(p2.y / 8) then
+  
+  	ballframe += 1
+   
+  	if ballframe > lifeframe then
+  	lives -= 1
+  
+  	ballframe = 0
+  
+  end -- end snow_ y if
+  
+  end -- end snow_x if
+
+end
+
+if flr((shark12x / 8 ))  <= flr(p2.x/8) and  flr (p2.x /8) <= flr(shark12x/8) + 1   then
+  --cls()
+  if flr (((shark_y+60) / 8)) >= flr(p2.y / 8) and flr ((shark_y + 60) / 8) - 1 <= flr(p2.y / 8) then
+  
+  	ballframe += 1
+   
+  	if ballframe > lifeframe then
+  	lives -= 1
+  
+  	ballframe = 0
+  
+  end -- end snow_ y if
+  
+  end -- end snow_x if
+
+end
+
+if flr((shark13x / 8 ))  <= flr(p2.x/8) and  flr (p2.x /8) <= flr(shark13x/8) + 1   then
+  --cls()
+  if flr (((shark_y+70) / 8)) >= flr(p2.y / 8) and flr ((shark_y + 70) / 8) - 1 <= flr(p2.y / 8) then
+  
+  	ballframe += 1
+   
+  	if ballframe > lifeframe then
+  	lives -= 1
+  
+  	ballframe = 0
+  
+  end -- end snow_ y if
+  
+  end -- end snow_x if
+
+end
+
+
+	
+	
+	
+	
+	
+	
+	
+	
 	
 end--update_game2
 
@@ -766,7 +1022,36 @@ function update_gover()
 	
 		lives = 3 
 		
+		
+		p2.x = 8 
+		p2.y = 180
+		
+		shark = 61
+	shark_y = 165
+	shark1x = 400
+	shark2x = 500
+	shark3x = 600
+	shark4x = 700
+	shark5x = 800
+	shark6x = 900
+	shark7x = 1000
+
+	shark8x = 400
+	shark9x = 500
+	shark10x = 600
+	shark11x = 700
+	shark12x = 800
+	shark13x = 900
+	shark14x = 1000
+		
+		
 		scene = "game2"
+		
+		
+		
+		
+		
+		
 	
 	elseif lastscene == "game3" then
 	
@@ -907,24 +1192,26 @@ spr(p2.sp, p2.x , flr(p2.y) , p2.w, p2.h)
 print('lives: '..lives, cx2, 155) 
 
 
-		if collide_map(p2, "up", 1) then
-			print("flag reached", cx2 , 150)
-		end
+	--	if collide_map(p2, "up", 1) then
+		--	print("flag reached", cx2 , 150)
+		--end
 		
-		print(p2.y , cx2 , 180)
+		--print(p2.y , cx2 , 180)
 		
-		if collide_map(p2, "down", 1) then
-			print("flag reached", cx2 , 150)
-		end
+	--	if collide_map(p2, "down", 1) then
+		--	print("flag reached", cx2 , 150)
+	--	end
 
 
 
  palt(14, true)
  palt(0,false)
- spr(shark, shark1x ,shark_y - 8 , 3 ,1 )
+ spr(shark, shark1x ,shark_y +80 , 3 ,1 )
 	
-	spr(shark, shark2x ,shark_y - 8 , 3 ,1 )
- spr(shark, shark3x ,shark_y+5 - 8 , 3 ,1 )
+		--print(shark_y -11 , cx2 , cy2 + 60)
+	
+	spr(shark, shark2x ,shark_y + 90  , 3 ,1 )
+ spr(shark, shark3x ,shark_y - 11 , 3 ,1 )
  spr(shark, shark4x ,shark_y+20 - 8 , 3 ,1 )
  spr(shark, shark5x ,shark_y+30 - 8 , 3 ,1 )
  spr(shark, shark6x ,shark_y+40 , 3 ,1 )
@@ -936,8 +1223,12 @@ print('lives: '..lives, cx2, 155)
  spr(shark, shark11x ,shark_y+50 - 8 , 3 ,1 )
  spr(shark, shark12x ,shark_y+60 , 3 ,1 )
  spr(shark, shark13x ,shark_y+70 , 3 ,1 )
- spr(shark, shark14x ,shark_y+100 , 3 ,1 )
+ spr(shark, shark14x ,shark_y+97 , 3 ,1 )
 
+--	print(shark_y+97,cx2, cy2 + 20)
+	--print(shark14x,cx2, cy2 + 40)
+
+	
 if lives == 0 then
 	
 		lastscene = scene
@@ -1288,7 +1579,7 @@ function player_update2()
 		if btn(⬇️) then
 			p2.sp = 40
 			p2.dy = 0
-			p2.dy+=p.acc*5
+			p2.dy+=p.acc*3
 			p2.running = true
 			p2.flp = true
 			c=3
