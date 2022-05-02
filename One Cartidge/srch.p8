@@ -1,5 +1,5 @@
 pico-8 cartridge // http://www.pico-8.com
-version 34
+version 36
 __lua__
 --init
 
@@ -1146,7 +1146,18 @@ end
 
 function draw_game() 
  cls()
+ 
+ local spritelocx 
+ 
+ if cx < 900 then
+ spritelocx = cx
 	camera(cx, cy - 24)
+	else
+	
+	camera(900 , cy-24)
+	
+	end
+	
 	map(mx,my)
 	spr(p.sp, p.x, p.y - 14, p.w, p.h)
 
@@ -1193,10 +1204,19 @@ function draw_game()
 -- print(flr(p.x/10), snow_x)
 	--prints the time at the top right
 	--print(q)
-	
+	if cx < 900 then	
 	print('health: ', cx, cy-24, 10) 
 	print('lives: ', cx, cy-18, 10)
-	printhealth() 
+	printhealth()
+	else
+	
+	print('health: ', 900, cy-24, 10) 
+	print('lives: ', 900, cy-18, 10)
+
+	printhealth()
+
+	
+	end
 	
 	if lives == 0 then
 		glives -= 1
@@ -1236,17 +1256,29 @@ function draw_game2()
 cls()
 map(mx2,my2)
 
-camera(cx2, 140)
+-- camera limiter
+if cx2 < 900 then
+	camera(cx2, 140)
 
+end
 -- sprite changed to swiming
 
 --print(p.x , p.y , 0 , 26*8)
 
 spr(p2.sp, p2.x , flr(p2.y) , p2.w, p2.h)
-print('health: ', cx2+2, 146, 10) 
-print('lives: ', cx2+2, 152, 10) 
-printhealth()
 
+if cx2 < 900 then
+	print('health: ', cx2+2, 146, 10) 
+	print('lives: ', cx2+2, 152, 10) 
+	printhealth()
+
+else
+
+	print('health: ', 900+2, 146, 10) 
+	print('lives: ', 900+2, 152, 10) 
+	printhealth()
+
+end
 
 	--	if collide_map(p2, "up", 1) then
 		--	print("flag reached", cx2 , 150)
@@ -1784,72 +1816,151 @@ function printhealth()
 		
 		if lives == 3 then
 			
+			if cx < 900 then
 			spr(51, cx+28, cy-26)
 			spr(51, cx+36, cy-26)
 			spr(51, cx+44, cy-26)
-		
+			else
+			
+			spr(51, 900+28, cy-26)
+			spr(51, 900+36, cy-26)
+			spr(51, 900+44, cy-26)
+			
+			
+			end
+			
+			
 		elseif lives == 2 then
 			
+			if cx < 900 then
 			spr(51, cx+28, cy-26)
 			spr(51, cx+36, cy-26)
+			
+			else 
+			
+			spr(51, 900+28, cy-26)
+			spr(51, 900+36, cy-26)
+			
+			end
 		
 		elseif lives == 1 then
 			
+			if cx < 900 then
 			spr(51, cx+28, cy-26)
+			else
+			
+			spr(51, 900+28, cy-26)
+
+			
+			end
+
+
 
 		end
 		
 		if glives == 3 then
 			
+			if cx < 900 then
+ 
 			spr(50, cx+24, cy-19)
 			spr(50, cx+32, cy-19)
 			spr(50, cx+40, cy-19)
 		
+			else
+			
+			
+			spr(50, 900+24, cy-19)
+			spr(50, 900+32, cy-19)
+			spr(50, 900+40, cy-19)
+			
+			end
+		
 		elseif glives == 2 then
 			
+			if cx < 900 then
+				
 			spr(50, cx+24, cy-19)
 			spr(50, cx+32, cy-19)
 		
+			else
+			
+			spr(50, 900+24, cy-19)
+			spr(50, 900+32, cy-19)
+			
+			end 
+			
 		elseif glives == 1 then
 			
+			if cx < 900 then 
 			spr(50, cx+24, cy-19)
-
+			else
+			spr(50, 900+24, cy-19)
+			end
+			
 		end
 	
 	elseif scene == "game2" then
 		
 		if lives == 3 then
 			
-			spr(51, cx2+30, 144)
-			spr(51, cx2+38, 144)
-			spr(51, cx2+46, 144)
+			if cx2 < 900 then
+				spr(51, cx2+30, 144)
+				spr(51, cx2+38, 144)
+				spr(51, cx2+46, 144)
+			else
+				spr(51, 900+30, 144)
+				spr(51, 900+38, 144)
+				spr(51, 900+46, 144)
+			end
 		
 		elseif lives == 2 then
 			
-			spr(51, cx2+30, 144)
-			spr(51, cx2+38, 144)
-		
+			if cx2 < 900 then 
+				spr(51, cx2+30, 144)
+				spr(51, cx2+38, 144)
+			else
+				spr(51, 900+30, 144)
+				spr(51, 900+38, 144)
+			end
+			
 		elseif lives == 1 then
 			
-			spr(51, cx2+30, 144)
-
+			if cx2< 900 then
+				spr(51, cx2+30, 144)
+			else
+				spr(51, 900+30, 144)
+			end
 		end
 		
 		if glives == 3 then
 			
-			spr(50, cx2+26, 151)
-			spr(50, cx2+34, 151)
-			spr(50, cx2+42, 151)
-		
-		elseif glives == 2 then
+			if cx2 < 900 then 
+				spr(50, cx2+26, 151)
+				spr(50, cx2+34, 151)
+				spr(50, cx2+42, 151)
+			else
+				spr(50, 900+26, 151)
+				spr(50, 900+34, 151)
+				spr(50, 900+42, 151)
+			end
 			
-			spr(50, cx2+26, 151)
-			spr(50, cx2+34, 151)
-		
+		elseif glives == 2 then
+			if cx2<900 then
+				spr(50, cx2+26, 151)
+				spr(50, cx2+34, 151)
+			else
+				spr(50, 900+26, 151)
+				spr(50, 900+34, 151)
+			end
+			
 		elseif glives == 1 then
 			
-			spr(50, cx2+26, 151)
-
+			if cx2 < 900 then
+				spr(50, cx2+26, 151)
+			else 
+				spr(50, 900+26, 151)
+			end
+			
 		end
 	
 	end
