@@ -1,5 +1,5 @@
 pico-8 cartridge // http://www.pico-8.com
-version 36
+version 34
 __lua__
 --init
 
@@ -181,7 +181,8 @@ function update_menu()
 	--when x is press change the
 	--scene to game
 	if btnp(❎) then 
-		scene = "game" 
+	--was game
+		scene = "game2" 
 	end 	
 	
 end  -- end update menu 
@@ -511,7 +512,7 @@ end
 
 function update_game2()
 
-
+player_update2()
 end
 
 
@@ -682,6 +683,10 @@ function draw_game()
  --end -- p.x check -- 
 end
 
+
+
+
+
 -- draw second level
 	
 function draw_game2()
@@ -689,16 +694,23 @@ function draw_game2()
 cls()
 
 map(mx, my)
-camera(8,18 * 8 )
+
 
 -- sprite changed to swiming
 
 
-print(p.x , p.y , 0 , 26*8)
+--print(p.x , p.y , 0 , 26*8)
 
-spr(p.sp, p.x, p.y  , p.w, p.h)
+spr(p.sp, p.x, p.y+187  , p.w, p.h)
+print('lives: '..lives, cx, cy+125) 
+camera(cx,cy*8 )
+if lives == 0 then
+	
+		lastscene = scene
+		scene = "gover"
+end
 
-print("here is game 2" , 4 * 8 , 26*8 )
+--print("here is game 2" , 4 * 8 , 26*8 )
 
 end
 
@@ -1005,6 +1017,137 @@ function snowball_update()
   ball.x+=1
   
 end--snoeball_update
+-->8
+--player_update2
+function player_update2()
+	--physics
+	p.dy+=gravity*.5
+	p.dx*=friction*.5
+	
+--	anim_time=0
+--	anim_wait=.05
+	--c resets the original sprite
+	--proablly not needed
+	--c = 1
+	-- if time() - anim_time > anim_wait then
+ --   p.sp+=6
+ --   anim_time = time()
+ --   if p.sp > 7  then
+ --     p.sp = c
+ --   end
+ -- end
+	
+	--controls
+	if btn(⬅️) then
+
+		p.sp=6--was 3
+		p.dx-=p.acc
+		p.running=true
+		p.flp=true
+		
+		c = 3
+		
+		end
+	
+	if btn(➡️) then
+	
+	 --if time() - anim_time > anim_wait then
+   -- p.sp+=6
+   -- anim_time=time()
+
+   -- if p.sp > 7 then
+     -- p.sp = 1
+   -- end
+ -- end
+	 p.sp=4
+	 c = 1
+		p.dx+=p.acc
+		p.running=true
+		p.flp=false
+		
+	end
+	
+	--slide
+	if p.running
+	and not btn(⬅️)
+	and not btn(➡️)
+	and not p.falling
+	and not p.jumping then
+		p.running=false
+		p.sliding=true
+	end
+	
+	--jump
+	if btnp(❎)
+	and p.landed then
+		p.sp=8
+		p.dy-=p.boost
+		p.landed=false
+	end
+	
+	-- check collision up and down
+	if p.dy>0 then
+		p_falling = true
+		p_landed = false
+		p.jumping=false
+		
+		if collide_map(p, "down", 0) then
+			p.landed=true
+			p.falling=false
+			p.dy=0
+			p.y-=(p.y+p.h)%8
+		end
+	elseif p.dy<0 then
+		p.jumping=true
+		if collide_map(p, "up", 1) then
+			p.dy=0
+		end
+	end
+	
+--check collision left and right
+	if p.dx<0 then
+		if collide_map(p, "left", 1) then
+			p.dx=0
+		end
+	elseif p.dx>0 then
+		if collide_map(p, "right", 1) then
+			p.dx=0
+		end
+	end
+
+	--stop sliding
+	if p.sliding then
+		if abs(p.dx)<.2
+		or p.running then
+			p.dx=0
+			p.sliding=false
+		end
+	end
+	
+	--movement
+		
+	p.x+=p.dx	
+	p.y+=p.dy
+			
+	cx = p.x 
+	cy = p.y - 39
+	
+	
+		-- this code detects when 
+		-- the flag is reached 
+		-- at the end of the code 
+	cobj = mget((p.x + 8)/ 8  , p.y / 8 )
+
+ if fget(cobj , 2 ) then
+	
+		scene = "game3"
+		
+		-- setting the value for next
+		-- location of the player 
+
+	end
+	
+end
 __gfx__
 0000000077777777000000000000000000000000000000000000000000000000000000000000000000007777777700000000000c700000007ccc7cccc000000c
 0000000077777777000040000000000000000444444400000000044444440000000004444444000000007777777700000000007c7c00000077cccc7cc700007c
