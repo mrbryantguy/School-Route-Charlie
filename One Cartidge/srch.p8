@@ -1194,8 +1194,8 @@ function draw_game()
 	--prints the time at the top right
 	--print(q)
 	
-	print('health: ', cx, cy-24) 
-	print('lives: ', cx, cy-18)
+	print('health: ', cx, cy-24, 10) 
+	print('lives: ', cx, cy-18, 10)
 	printhealth() 
 	
 	if lives == 0 then
@@ -1243,8 +1243,8 @@ camera(cx2, 140)
 --print(p.x , p.y , 0 , 26*8)
 
 spr(p2.sp, p2.x , flr(p2.y) , p2.w, p2.h)
-print('health: ', cx2+2, 146) 
-print('lives: ', cx2+2, 152) 
+print('health: ', cx2+2, 146, 10) 
+print('lives: ', cx2+2, 152, 10) 
 printhealth()
 
 
@@ -1329,8 +1329,8 @@ function draw_end()
 
 
  
-	print("why are you late",37*8 ,50*8, 2)
-	print("game over" ,37*8 ,55*8, 2)
+	print("why are you late?",37*8 ,55*8, 8)
+	print("you made it!" ,37*8 ,50*8, 8)
 
 end 
 
@@ -1347,9 +1347,9 @@ function draw_gameover()
 	 	palt(0,false)
   end 
   
-  print("you collapsed", 57*8, 50*8, 2)
+  print("you collapsed", 57*8, 50*8, 8)
   
-  print("press ❎ to keep going", 54*8 , 60*8 , 2)
+  print("press ❎ to keep going", 54*8 , 60*8 , 8)
   
   --debug print
   --print(scene)
@@ -1365,9 +1365,9 @@ function draw_gameover2()
   palt(0,true)
 	 palt(14,false)
   
-  print("you died", 24*8, 50*8, 2)
+  print("you died", 24*8, 50*8, 8)
   
-  print("press ❎ for restart", 21*8 , 60*8 , 2)
+  print("press ❎ for restart", 21*8 , 60*8 , 8)
   
   --debug print
   --print(scene)
