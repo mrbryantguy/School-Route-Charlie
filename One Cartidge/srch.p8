@@ -39,7 +39,7 @@ function _init()
  
  
  	p2={
-		sp=4,
+		sp=38,
 		x=8,
 		y=flr(180),
 		w=2,
@@ -202,6 +202,14 @@ shark4x = 700
 shark5x = 800
 shark6x = 900
 shark7x = 1000
+
+shark8x = 400
+shark9x = 500
+shark10x = 600
+shark11x = 700
+shark12x = 800
+shark13x = 900
+shark14x = 1000
 
 
 function update_logo()
@@ -564,6 +572,14 @@ shark5x -= 4
 shark6x -= 5
 shark7x -= 5
 
+shark8x -= 6
+shark9x -= 6
+shark10x -= 7
+shark11x -= 8
+shark12x -= 8
+shark13x -= 9
+shark14x -= 10
+
 local spawnlimit = 950
 
 --this resets the sharks when 
@@ -631,7 +647,64 @@ if shark7x < p2.x then
 	shark7x = flr(p2.x + 900)
 	end
 	
+	
 	end
+	if shark8x < p2.x then
+	
+	if flr(p2.x + 300) < spawnlimit then
+	shark8x = flr(p2.x + 300)
+	
+	end
+
+end
+
+if shark9x < p2.x then
+	
+	if flr(p2.x + 400 < spawnlimit) then
+	shark9x = flr(p2.x + 400)
+	end
+
+end
+
+if shark10x < p2.x then
+
+	if flr(p2.x + 500) < spawnlimit then
+	shark10x = flr(p2.x + 500)
+	end
+	
+end
+
+if shark11x < p2.x then
+
+	if flr(p2.x + 600) < spawnlimit then
+	shark11x = flr(p2.x + 600)
+	end
+
+end
+
+if shark12x < p2.x then
+	
+	if flr(p2.x + 700) < spawnlimit then
+	shark12x = flr(p2.x + 700)
+	end
+
+end
+
+if shark13x < p2.x then
+
+	if flr(p2.x + 800) < spawnlimit then
+	shark13x = flr(p2.x + 800)
+	end
+
+end
+
+if shark14x < p2.x then
+
+	if	flr (p2.x + 900) < spawnlimit then
+	shark14x = flr(p2.x + 900)
+	end
+	end
+	
 end--update_game2
 
 
@@ -852,10 +925,18 @@ print('lives: '..lives, cx2, 155)
 	
 	spr(shark, shark2x ,shark_y - 8 , 3 ,1 )
  spr(shark, shark3x ,shark_y+5 - 8 , 3 ,1 )
- spr(shark, shark4x ,shark_y+5 - 8 , 3 ,1 )
- spr(shark, shark5x ,shark_y+10 - 8 , 3 ,1 )
- spr(shark, shark6x ,shark_y- 8 , 3 ,1 )
- spr(shark, shark7x ,shark_y - 8 , 3 ,1 )
+ spr(shark, shark4x ,shark_y+20 - 8 , 3 ,1 )
+ spr(shark, shark5x ,shark_y+30 - 8 , 3 ,1 )
+ spr(shark, shark6x ,shark_y+40 , 3 ,1 )
+ spr(shark, shark7x ,shark_y+25 , 3 ,1 )
+ 
+ spr(shark, shark8x ,shark_y +80 , 3 ,1 )
+ spr(shark, shark9x ,shark_y+35 - 8 , 3 ,1 )
+ spr(shark, shark10x ,shark_y+40 - 8 , 3 ,1 )
+ spr(shark, shark11x ,shark_y+50 - 8 , 3 ,1 )
+ spr(shark, shark12x ,shark_y+60 , 3 ,1 )
+ spr(shark, shark13x ,shark_y+70 , 3 ,1 )
+ spr(shark, shark14x ,shark_y+100 , 3 ,1 )
 
 if lives == 0 then
 	
@@ -1202,6 +1283,16 @@ function player_update2()
 		c = 3
 		
 		end
+		
+		
+		if btn(⬇️) then
+			p2.sp = 40
+			p2.dy = 0
+			p2.dy+=p.acc*5
+			p2.running = true
+			p2.flp = true
+			c=3
+			end
 	
 	if btn(➡️) then
 	
