@@ -1,5 +1,5 @@
 pico-8 cartridge // http://www.pico-8.com
-version 34
+version 36
 __lua__
 --init
 
@@ -702,8 +702,15 @@ map(mx, my)
 --print(p.x , p.y , 0 , 26*8)
 
 spr(p.sp, p.x, p.y+187  , p.w, p.h)
-print('lives: '..lives, cx, cy+125) 
-camera(cx,cy*8 )
+print('lives: '..lives, cx, 155) 
+
+
+
+camera(cx, 140)
+
+
+
+
 if lives == 0 then
 	
 		lastscene = scene
